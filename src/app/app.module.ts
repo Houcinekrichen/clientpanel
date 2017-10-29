@@ -23,6 +23,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 // serive import
 import {ClientService} from './services/client.service' ;
+import {AuthService} from './services/auth.service' ;
 
 const appRoutes : Routes =[
 
@@ -65,7 +66,7 @@ export const fireBaseConfig = {
     FlashMessagesModule
   ],
   providers: [AngularFireAuth,
-  AngularFireDatabase,ClientService],
+  AngularFireDatabase,ClientService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
