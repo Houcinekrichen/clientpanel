@@ -14,5 +14,12 @@ export class AuthService {
       err => reject(err))
     })
   }
+  //check user status 
+  getAuth(){
+    return  this.anFauth.authState.map(auth => auth)
+  }
+  logout (){
+    this.anFauth.auth.signOut();
+  }
 
 }
