@@ -24,15 +24,16 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 // serive import
 import {ClientService} from './services/client.service' ;
 import {AuthService} from './services/auth.service' ;
+import {AuthGuard} from "./guards/auth.guard"
 
 const appRoutes : Routes =[
 
-  {path:'',component:DashbordComponent},
+  {path:'',component:DashbordComponent,canActivate:[AuthGuard] },
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  {path:'addclient',component:AddclientComponent},
-  {path:'client/:id',component:ClientDetailsComponent},
-  {path:'edit-client/:id',component:EditclientComponent}
+  {path:'addclient',component:AddclientComponent,canActivate:[AuthGuard]},
+  {path:'client/:id',component:ClientDetailsComponent,canActivate:[AuthGuard]},
+  {path:'edit-client/:id',component:EditclientComponent,canActivate:[AuthGuard]}
   
 ]
 
@@ -65,7 +66,7 @@ export const fireBaseConfig = {
     AngularFireModule.initializeApp(fireBaseConfig),
     FlashMessagesModule
   ],
-  providers: [AngularFireAuth,
+  providers: [AngularFireAuth,AuthGuard,
   AngularFireDatabase,ClientService,AuthService],
   bootstrap: [AppComponent]
 })
