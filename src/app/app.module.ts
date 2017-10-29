@@ -35,7 +35,9 @@ const appRoutes : Routes =[
   {path:'login',component:LoginComponent},
   {path:'addclient',component:AddclientComponent,canActivate:[AuthGuard]},
   {path:'client/:id',component:ClientDetailsComponent,canActivate:[AuthGuard]},
-  {path:'edit-client/:id',component:EditclientComponent,canActivate:[AuthGuard]}
+  {path:'edit-client/:id',component:EditclientComponent,canActivate:[AuthGuard]},
+  {path:'settings',component:SettingsComponent,canActivate:[AuthGuard]},
+  {path:'**',component:PageNotFoundComponent}
   
 ]
 
