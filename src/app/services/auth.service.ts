@@ -21,5 +21,12 @@ export class AuthService {
   logout (){
     this.anFauth.auth.signOut();
   }
+  register(email :string , password :string){
+    return new Promise((resolve ,reject) => {
+      this.anFauth.auth.createUserWithEmailAndPassword(email,password)
+      .then(userData => resolve(userData),
+      err => reject(err))
+    })
+  }
 
 }
